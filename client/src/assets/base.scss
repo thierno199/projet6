@@ -1,18 +1,18 @@
 :root {
-  --primary-1: #3498db;
-  --primary-2:#2980b9 ;
-  --danger-1:#e74c3c;
-  --danger-2:#c0392b;
-  --success-1:#2ecc71 ;
-  --success-2:#27ae60 ;
-  --gray-1:#f6f6f6;
+  --primary-1: #e67e22;
+  --primary-2: #d35400;
+  --danger-1: #e74c3c;
+  --danger-2: #c0392b;
+  --success-1: #2ecc71;
+  --success-2: #27ae60;
+  --gray-1: #f6f6f6;
   --gray-2: #ddd;
   --gray-3: #34495e;
   --text-color: #444;
   --text-primary-color: #ffffff;
 
 
-  --border:1px solid var(--gray-2);
+  --border: 1px solid var(--gray-2);
   --border-radius: 4px;
 
   --font-family: 'Roboto', sans-serif;
@@ -24,8 +24,11 @@
   box-sizing: border-box;
 }
 
-h1,h2,h3,h4 {
-  margin:0;
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
 }
 
 ul {
@@ -34,7 +37,7 @@ ul {
 }
 
 img {
- max-width: 100%;
+  max-width: 100%;
 }
 
 a {
@@ -52,7 +55,9 @@ body {
   background-color: var(--gray-1);
 }
 
-input, textarea, select {
+input,
+textarea,
+select {
   border: var(--border);
   border-radius: var(--border-radius);
   padding: 8px 15px;
@@ -92,6 +97,10 @@ label {
   align-items: center;
 }
 
+.align-items-start {
+  align-items: flex-start;
+}
+
 .flex-fill {
   flex: 1 1 auto;
 }
@@ -99,11 +108,11 @@ label {
 // padding
 
 .p-10 {
-  padding:10px;
+  padding: 10px;
 }
 
 .p-20 {
-  padding:20px;
+  padding: 20px;
 }
 
 .px-20 {
@@ -112,7 +121,7 @@ label {
 }
 
 .p-30 {
-  padding:30px;
+  padding: 30px;
 }
 
 // margin
@@ -122,7 +131,7 @@ label {
 }
 
 .m-10 {
-  margin:10px;
+  margin: 10px;
 }
 
 .mr-10 {
@@ -138,7 +147,7 @@ label {
 }
 
 .m-20 {
-  margin:20px;
+  margin: 20px;
 }
 
 .mb-20 {
@@ -146,14 +155,14 @@ label {
 }
 
 .m-30 {
-  margin:30px;
+  margin: 30px;
 }
 
 // buttons
 
 .btn {
   padding: 8px 15px;
-  border:0;
+  border: 0;
   border-radius: var(--border-radius);
   cursor: pointer;
   font-weight: 500;
@@ -163,24 +172,27 @@ label {
 .btn-primary {
   background-color: var(--primary-1);
   color: var(--text-primary-color);
+
   &:hover {
-      background-color: var(--primary-2);
+    background-color: var(--primary-2);
   }
 }
 
 .btn-danger {
   background-color: var(--danger-1);
   color: var(--text-primary-color);
+
   &:hover {
-      background-color: var(--danger-2);
+    background-color: var(--danger-2);
   }
 }
 
 .btn-success {
   background-color: var(--success-1);
   color: var(--text-primary-color);
+
   &:hover {
-      background-color: var(--success-2);
+    background-color: var(--success-2);
   }
 }
 
@@ -189,6 +201,6 @@ label {
 .card {
   border: var(--border);
   border-radius: var(--border-radius);
-  background-color:white;
+  background-color: white;
   padding: 10px;
-} 
+}
