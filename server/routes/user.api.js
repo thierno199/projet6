@@ -4,40 +4,40 @@ const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
 const { keyPub } = require('../env/keys');
 
-
 router.post('/', async (req, res) => {
-    const body = req.body;
-    const user = new UserModel({
-        name: body.name,
-        email: body.email,
-        password: bcrypt.hashSync(body.password, bcrypt.genSaltSync(8))
-    })
-    user.save((err, user) => {
-        if (err) {
-            res.status(400).json("Erreur lors de l'inscription");
-        }
-        res.json(null);
-    })
-})
-
+  const body = req.body;
+  const user = new UserModel({
+    name: body.name,
+    email: body.email,
+    password: await bcrypt.hash(body.password, 8),
+  });
+  user.save((err, user) => {
+    if (err) {
+      res.status(400).json("Erreur lors de l'inscription");
+    }
+    res.json(null);
+  });
+});
 
 router.get('/current', async (req, res) => {
-    const token = req.cookies.token;
-    if (token) {
-        try {
-            const decodedToken = jsonwebtoken.verify(token, keyPub);
-            const user = await UserModel.findById(decodedToken.sub).select('-password -__v').exec();
-            if (user) {
-                res.json(user);
-            } else {
-                res.json(null);
-            }
-        } catch (e) {
-            res.json(null);
-        }
-    } else {
+  const token = req.cookies.token;
+  if (token) {
+    try {
+      const decodedToken = jsonwebtoken.verify(token, keyPub);
+      const user = await UserModel.findById(decodedToken.sub)
+        .select('-password -__v')
+        .exec();
+      if (user) {
+        res.json(user);
+      } else {
         res.json(null);
+      }
+    } catch (e) {
+      res.json(null);
     }
-})
+  } else {
+    res.json(null);
+  }
+});
 
 module.exports = router;
