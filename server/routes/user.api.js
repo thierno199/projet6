@@ -11,12 +11,12 @@ router.post('/', async (req, res) => {
     email: body.email,
     password: await bcrypt.hash(body.password, 8),
   });
-  user.save((err, user) => {
-    if (err) {
-      res.status(400).json("Erreur lors de l'inscription");
-    }
+  try {
+    await user.save();
     res.json(null);
-  });
+  } catch (err) {
+    res.status(400).json("Erreur lors de l'inscription");
+  }
 });
 
 router.get('/current', async (req, res) => {
