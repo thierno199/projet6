@@ -2,7 +2,7 @@ const router = require('express').Router();
 const UserModel = require('../database/models/user.model');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
-const { keyPub } = require('../env/keys');
+const publickey = process.env.JWT_PUBLIC_KEY;
 
 router.post('/', async (req, res) => {
   const body = req.body;

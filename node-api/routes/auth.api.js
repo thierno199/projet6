@@ -2,14 +2,14 @@ const router = require('express').Router();
 const UserModel = require('../database/models/user.model');
 const bcrypt = require('bcrypt');
 const jsonwebtoken = require('jsonwebtoken');
-const { key } = require('../env/keys');
+const privateKey = process.env.JWT_PRIVATE_KEY;
 
 router.post('/', async (req, res) => {
     const body = req.body;
     const user = await UserModel.findOne({ email: body.email }).exec();
     if (user) {
         if (bcrypt.compareSync(body.password, user.password)) {
-            const token = jsonwebtoken.sign({}, key, {
+            const token = jsonwebtoken.sign({}, privateKey, {
                 subject: user._id.toString(),
                 expiresIn: 60 * 60 * 24 * 30 * 6,
                 algorithm: 'RS256'
